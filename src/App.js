@@ -18,26 +18,24 @@ const animations = {
       }
     },
     animation: (animationValue) => {
-      return           Animated.timing(
-            animationValue,
-            {
-              fromValue: 0,
-              toValue: 1,
-              duration: 500,
-            }
-          )
+      return Animated.timing(
+        animationValue,
+        {
+          fromValue: 0,
+          toValue: 1,
+          duration: 500,
+        }
+      )
     }
   },
   fadeInUp: {
     label: "fade in up",
     animation: (animationValue) => {
-      return Animated.loop(Animated.timing(animationValue, {
+      return Animated.timing(animationValue, {
         toValue: 1,
         duration: 1000,
       }
-      ), {
-        iterations: 1
-      })
+      )
     },
     style: (animationValue) => {
       return {
