@@ -54,7 +54,7 @@ const animations = {
 }
 
 
-let ShakeView = (props, ref) => {
+let AnimatedView = (props, ref) => {
   const animationValue = useRef(new Animated.Value(0)).current
   const [currentAnimation, setCurrentAnimation] = useState()
 
@@ -94,7 +94,7 @@ let ShakeView = (props, ref) => {
   );
 };
 
-ShakeView = forwardRef(ShakeView)
+AnimatedView = forwardRef(AnimatedView)
 
 const App = () => {
   const [currentAnimation, setCurrentAnimation] = useState()
