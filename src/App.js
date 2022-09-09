@@ -104,9 +104,9 @@ const App = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Animation status: {animationStatus}</Text>
-      <ShakeView ref={shakeViewRef} style={{ width: 250, height: 50, backgroundColor: 'powderblue' }}>
+      <AnimatedView ref={shakeViewRef} style={{ width: 250, height: 50, backgroundColor: 'powderblue' }}>
         <Text style={{ fontSize: 28, textAlign: 'center', margin: 10 }}>{currentAnimation}</Text>
-      </ShakeView>
+      </AnimatedView>
       <View style={{ marginTop: 100 }}>
         <Button title="shake" onPress={async () => {
           setCurrentAnimation("shake")
