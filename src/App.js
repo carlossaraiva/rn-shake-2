@@ -9,45 +9,23 @@ const animations = {
       return {
         transform: [
           {
-            translateX: animationValue
+            translateX: animationValue.interpolate({
+              inputRange: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+              outputRange: [0, -20, 20, -20, 20, -20, 20, -20, 20, -20, 0]
+            })
           }
         ]
       }
     },
     animation: (animationValue) => {
-      return Animated.loop(
-        Animated.sequence([
-          Animated.timing(
+      return           Animated.timing(
             animationValue,
             {
-              toValue: -10,
-              duration: 30,
+              fromValue: 0,
+              toValue: 1,
+              duration: 500,
             }
-          ),
-          Animated.timing(
-            animationValue,
-            {
-              toValue: 0,
-              duration: 30,
-            }
-          ),
-          Animated.timing(
-            animationValue,
-            {
-              toValue: 10,
-              duration: 30,
-            }
-          ),
-          Animated.timing(
-            animationValue,
-            {
-              toValue: 0,
-              duration: 30,
-            }
-          ),
-        ]), {
-        iterations: 2
-      })
+          )
     }
   },
   fadeInUp: {
@@ -84,6 +62,7 @@ let ShakeView = (props, ref) => {
 
   useImperativeHandle(ref, () => ({
     shake: () => {
+      animationValue.setValue(0);
       setCurrentAnimation("shake");
       return new Promise((resolve) => {
         animations.shake.animation(animationValue).start((result) => resolve({
@@ -93,6 +72,7 @@ let ShakeView = (props, ref) => {
       })
     },
     fadeInUp: () => {
+      animationValue.setValue(0);
       setCurrentAnimation("fadeInUp");
       return new Promise((resolve) => {
         animations.fadeInUp.animation(animationValue).start((result) => resolve({
